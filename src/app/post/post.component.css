@@ -1,0 +1,12 @@
+.img-wrapper{
+	width: 100%;
+	max-width: 500px;
+	margin: auto;
+	background: linear-gradient(155deg, #d7f7ff 6%, #ffedfa 88%);
+}
+
+.img-wrapper img{
+	width: 100%;
+	transition: 0.5s;
+	opacity: 0;
+}

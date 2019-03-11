@@ -1,0 +1,71 @@
+<section class="container">
+	
+	<!-- Loader -->
+	<div class="loader mx-auto" *ngIf="!posts"></div>
+
+	<ng-container *ngIf="posts && posts.length > 0">
+		
+		<div class="row mb-4" *ngFor="let post of posts | paginate: { itemsPerPage: 5, currentPage: p }">
+			<div class="col-6">
+				<a routerLink="/{{post.slug}}">
+					<!-- Image -->
+					<div *ngIf="post['_embedded']['wp:featuredmedia'][0]['source_url']" class="img-wrapper">
+						<img
+							class="w-100"
+							src='{{post["_embedded"]["wp:featuredmedia"][0]["source_url"]}}'
+							alt="Card image cap"
+							#ev (load)="loadImg(ev)"
+						/>
+					</div>
+				</a>
+			</div>
+
+			<div class="col-6">
+				<!-- Title -->
+				<a routerLink="/{{post.slug}}">
+					<h1>{{post.title.rendered}}</h1>
+				</a>
+				
+				<!-- Details -->
+				<div class="d-inline-block mr-3">
+					<svg class="icon mr-2">
+						<use xlink:href="assets/sprite.svg#calendar"></use>
+					</svg>
+					<small>{{ post.date | date }}</small>
+				</div>
+
+				<div class="d-inline-block mr-3">
+					<svg class="icon mr-2">
+						<use xlink:href="assets/sprite.svg#profile"></use>
+					</svg>
+					<small>By Pascale</small>
+				</div>
+				
+				<!-- Body text -->
+				<div class="text-left">
+					<div class="excerpt" [innerHTML]="post.excerpt.rendered"></div>
+					<a routerLink="/{{post.slug}}" class="continue-reading">Continue reading &rarr;</a>
+				</div>
+
+			</div>
+		</div>
+		
+		<!-- Pagination -->
+		<div class="row" *ngIf="posts">
+			<div class="col-12 text-center">
+				<pagination-controls (pageChange)="p = $event" (click)="scrollUp()"></pagination-controls>
+			</div>
+		</div>
+
+	</ng-container>
+
+	
+	<!-- If no search results -->
+	<div class="row" *ngIf="posts && posts.length == 0">
+		<div class="col-12">
+			<h1>No results found.</h1>
+		</div>
+	</div>
+
+
+</section>
