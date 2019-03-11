@@ -79,15 +79,30 @@ nav .btn-outline-primary:hover{
 }
 
 
+#mobileNavbar .btn-outline-primary {
+    color: #4CAF50;
+    border-color: #4CAF50;
+}
+
+#mobileNavbar .btn-outline-primary:hover,
+#mobileNavbar .btn-outline-primary:focus,
+#mobileNavbar .btn-outline-primary:active,
+#mobileNavbar .btn-outline-primary:not(:disabled):not(.disabled).active,
+#mobileNavbar .btn-outline-primary:not(:disabled):not(.disabled):active{
+    color: #fff;
+    background-color: #4CAF50;
+    border-color: #4CAF50;
+}
+
 #mobileNavbar{
 	background-color: #1b1b1b;
 	max-height: 0;
     overflow: hidden;
     transition: 0.3s;
-
 }
 
 #mobileNavbar.reveal{
 	max-height: 200px;
 }
+
 

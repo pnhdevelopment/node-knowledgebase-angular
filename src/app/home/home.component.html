@@ -1,4 +1,4 @@
-<section class="container">
+<section class="container" id="home">
 	
 	<!-- Loader -->
 	<div class="loader mx-auto" *ngIf="!posts"></div>
@@ -6,7 +6,7 @@
 	<ng-container *ngIf="posts && posts.length > 0">
 		
 		<div class="row mb-4" *ngFor="let post of posts | paginate: { itemsPerPage: 5, currentPage: p }">
-			<div class="col-6">
+			<div class="col-12 col-md-6">
 				<a routerLink="/{{post.slug}}">
 					<!-- Image -->
 					<div *ngIf="post['_embedded']['wp:featuredmedia'][0]['source_url']" class="img-wrapper">
@@ -20,10 +20,10 @@
 				</a>
 			</div>
 
-			<div class="col-6">
+			<div class="col-12 col-md-6">
 				<!-- Title -->
 				<a routerLink="/{{post.slug}}">
-					<h1>{{post.title.rendered}}</h1>
+					<h1 [innerHTML]="post.title.rendered"></h1>
 				</a>
 				
 				<!-- Details -->
