@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
       
       console.log(param.q)
 
-      this.url = 'http://www.node-knowledgebase-api.pnhdevelopment.com/wp-json/wp/v2/posts?_embed&search=' + this.q;
+      this.url = 'https://www.node-knowledgebase-api.pnhdevelopment.com/wp-json/wp/v2/posts?_embed&search=' + this.q;
 
       this.http.get(this.url).subscribe(res => {
         this.posts = res;
